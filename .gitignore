@@ -1,0 +1,10 @@
+# Ignore list
+
+# TeX things:
+*.aux
+*.log
+*.synctex.gz
+*.bbl
+*.blg
+
+ignore/
