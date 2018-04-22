@@ -7,4 +7,9 @@
 *.bbl
 *.blg
 
+# Matlab things:
+*.m~
+*.asv
+
+# directories:
 ignore/
