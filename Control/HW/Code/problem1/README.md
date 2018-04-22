@@ -21,7 +21,7 @@ The initial trajectory is a semicircular path, resulting from constant control s
 
 Using 101 timesteps, the optimization completes in about 13 seconds and returns a nice parallel-parking trajectory:
 
-![optimal_trajectory](optimalrajectory.jpg)
+![optimal_trajectory](optimaltrajectory.jpg)
 
 That trajectory is the result of the following control signals:
 
