@@ -3,11 +3,11 @@ function zeta = p4_descent_dir(time, x, u)
     global Q R P1;
     global xd;
     %% solve Riccati + remainder equations:
-   r0 = P1*(x(:,end) - xd(:,end));
+   rT = P1*(x(:,end) - xd(:,end));
    [time, P] = ode45(@(t,P) p4_riccati(t, P, time, x, u), flip(time), P1);
    P = flip(P)';
    time = flip(time)';
-   [time, r] = ode45(@(t,r) p4_remainder(t, r, time, x, u, P), flip(time), r0);
+   [time, r] = ode45(@(t,r) p4_remainder(t, r, time, x, u, P), flip(time), rT);
    r = flip(r)';
    time = flip(time)';
 
