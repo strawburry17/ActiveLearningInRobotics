@@ -36,8 +36,6 @@ for m = 1:M
 end
 
 figure
-plot(x(1,:),x(2,:),'k')
-hold on
 xlabel('x')
 ylabel('y')
 axis([-1 5 -1 3]);
@@ -81,10 +79,25 @@ for i = 1:length(t)
     % conditionally plot the particles:
     if mod(t(i),1)==0
         fprintf("t = %f\n",t(i));
-        scatter(xP(1,:),xP(2,:),'.')
-        hold on
-        plot(x_est(1),x_est(2),'k*')
+        switch t(i)
+            case 0
+                s = 'b.';
+            case 1
+                s = 'g.';
+            case 2
+                s = 'r.';
+            case 3
+                s = 'c.';
+            case 4
+                s = 'm.';
+            case 5
+                s = 'y.';
+            case 6
+                s = 'b.';
+        end
     end
+    scatter(xP(1,:),xP(2,:),s)
+    hold on
     
          
     % log:
@@ -95,6 +108,8 @@ for i = 1:length(t)
     % set up for next iteration:
     xprev = x;
 end
+plot(x(1,:),x(2,:),'k')
+plot(x_est_log(1,:),x_est_log(2,:),'k*')
 hold off
 title('Actual path and estimated path')
 
