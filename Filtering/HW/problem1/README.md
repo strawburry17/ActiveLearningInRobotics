@@ -8,7 +8,7 @@ The kinematic car:
     [dy_dt] = sin(theta)*u1
 [dtheta_dt] = u2
 ```
-with initial condition `[0,0,pi/2]`, `dt` = 0.1, and normally distributed process and measurement noise with variance of 0.05.
+with initial condition `[0,0,pi/2]`, constant control inputs `[u1, u2] = [1, -0.5]`, `dt` = 0.1, and normally distributed process and measurement noise with variance of 0.05.
 
 ## Plot
 
