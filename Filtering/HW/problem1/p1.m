@@ -3,6 +3,10 @@ close all;
 clc;
 
 %% Particle filter for the vehicle model in Homework 1
+% references:
+% https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python/blob/master/12-Particle-Filters.ipynb
+% http://studentdavestutorials.weebly.com/particle-filter-with-matlab-code.html
+
 dt = 0.1; % timestep size
 T = 6; % time horizon
 t = 0:dt:T; % time vector
@@ -34,24 +38,16 @@ end
 figure
 plot(x(1,:),x(2,:),'k')
 hold on
-% scatter(xP(1,:),xP(2,:),'r.')
 xlabel('x')
 ylabel('y')
 axis([-1 5 -1 3]);
 
 xprev = x0;
-% xP_prev = xP;
 
 for i = 1:length(t)
     
     % update state and observed state (Euler integration):
-    xi = x(:,i);
-%     x = xprev + [cos(xprev(3))*u1;
-%                  sin(xprev(3))*u1;
-%                  u2].*dt + ...
-%                  [normrnd(0,proc_noise_var);
-%                   normrnd(0,proc_noise_var);
-%                   normrnd(0,proc_noise_var)];     
+    xi = x(:,i);   
     
     % predict:
     for m = 1:M
@@ -77,9 +73,6 @@ for i = 1:length(t)
     
     % resampling:
     for m = 1:M
-%         cumulative_sum = cumsum(P);
-%         cumulative_sum(end) = 1;
-%         indexes = find(cumulative_sum, rand);
         xP(:,m) = xP_pred(:,find(rand <= cumsum(P),1));
     end
     
@@ -101,28 +94,11 @@ for i = 1:length(t)
     
     % set up for next iteration:
     xprev = x;
-%     xP_prev = xP_pred;
 end
 hold off
-% legend('Actual','t = 1','t = 2','t = 3','t = 4','t = 5','t = 6','Location','Best')
 title('Actual path and estimated path')
 
 %% Visualizations
-% figure
-% plot(t,x)
-% xlabel('time (s)')
-% legend('x','y','\theta','Location','Best')
-% title('Actual state vs time')
-
-figure
-plot(x_log(1,:),x_log(2,:))
-hold on
-scatter(xP(1,:),xP(2,:),'r.')
-hold off
-xlabel('x')
-ylabel('y')
-title('Actual path')
-axis([-1 5 -1 3]);
 
 figure
 plot(x_log(1,:),x_log(2,:))
