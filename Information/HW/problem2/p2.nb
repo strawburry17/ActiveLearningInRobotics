@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     56409,       1140]
-NotebookOptionsPosition[     55006,       1089]
-NotebookOutlinePosition[     55598,       1110]
-CellTagsIndexPosition[     55555,       1107]
+NotebookDataLength[     56501,       1143]
+NotebookOptionsPosition[     55098,       1092]
+NotebookOutlinePosition[     55690,       1113]
+CellTagsIndexPosition[     55647,       1110]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -158,7 +158,8 @@ Cell[BoxData[
   "Fisher information (5 flips): I[\[Theta]] = ", 
    5/($CellContext`\[Theta] - $CellContext`\[Theta]^2)],
   Editable->False]], "Print",
- CellChangeTimes->{3.736716372965811*^9, 3.736717337447774*^9}],
+ CellChangeTimes->{3.736716372965811*^9, 3.736717337447774*^9, 
+  3.737111282700083*^9}],
 
 Cell[BoxData[
  GraphicsBox[{{{}, {}, 
@@ -346,7 +347,7 @@ t+8Wcl5dBPqExe1FoVb4uzXwXcb9RXDpkA54vXIWDT0139j6LsJMh8uOWiFr
 fH9o5yv2AMI8BgExZtZo5R2RcCd0EdaO1b8zKbbGsiOxMaqPid+/+fihOuQc
 pmcI3v/0fvH//y/xf41deWk=
        "]]},
-     Annotation[#, "Charting`Private`Tag$1237#1"]& ]}, {}, {}},
+     Annotation[#, "Charting`Private`Tag$635#1"]& ]}, {}, {}},
   AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
   Axes->{True, True},
   AxesLabel->{None, None},
@@ -379,7 +380,8 @@ pmcI3v/0fvH//y/xf41deWk=
      Scaled[0.05], 
      Scaled[0.05]}},
   Ticks->{Automatic, Automatic}]], "Output",
- CellChangeTimes->{3.7367163730425177`*^9, 3.736717337477186*^9}]
+ CellChangeTimes->{3.7367163730425177`*^9, 3.736717337477186*^9, 
+  3.73711128276999*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -462,7 +464,8 @@ Cell[BoxData[
    2/($CellContext`\[Theta] - $CellContext`\[Theta]^2)],
   Editable->False]], "Print",
  CellChangeTimes->{
-  3.736716375830636*^9, {3.736717373538612*^9, 3.736717381463005*^9}}],
+  3.736716375830636*^9, {3.736717373538612*^9, 3.736717381463005*^9}, 
+   3.737111286968318*^9}],
 
 Cell[BoxData[
  TemplateBox[{GraphicsBox[{{{{}, {}, 
@@ -673,8 +676,7 @@ VwnGzUVYIF/8MdVuWTqc0nlumsZgiQbWi8dn1OjgqnW0O2fFErtMLEke6nRY
 iXUL8dA8inZQNrOkQQcOOQ3K3I2jGCh8K2BFiw4paTnUE9zHMG9m50NOYzqU
 0xsoovrHMSz1pu3IYTps+4uSiZnH0dGcJvbSjA73mguMWJhOoI9P5NXko/T/
 ///pf0j0ErU=
-          "]]}, Annotation[#, "Charting`Private`Tag$1599#1"]& ], 
-       
+          "]]}, Annotation[#, "Charting`Private`Tag$775#1"]& ], 
        TagBox[{
          Directive[
           Opacity[1.], 
@@ -854,7 +856,7 @@ bFoJv2qNlQ6HWadY58Cepe5kcrY17tyk9S+Pdw4+h8sonRc7guOnzOlG0nOg
 vlXhQCWfDapx8c78k5mDoGSvjErCBh+WtE/mys2B8eXMWFFrG9TjsR3dQsxB
 USq/I/NDG0yrcOwbVZuDL9++7I3bYYupeQVS/3Tm/v///P8D4dfPhA==
           "]]}, 
-        Annotation[#, "Charting`Private`Tag$1599#2"]& ]}}, {}, {}}, {
+        Annotation[#, "Charting`Private`Tag$775#2"]& ]}}, {}, {}}, {
     DisplayFunction -> Identity, Ticks -> {Automatic, Automatic}, 
      AxesOrigin -> {0, 8.000000189554642}, 
      FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, 
@@ -1082,7 +1084,8 @@ USq/I/NDG0yrcOwbVZuDL9++7I3bYYupeQVS/3Tm/v///P8D4dfPhA==
        RowBox[{"Placed", "[", 
          RowBox[{#2, ",", "After"}], "]"}]}], "]"}]& )]], "Output",
  CellChangeTimes->{
-  3.736716375937804*^9, {3.736717373588087*^9, 3.7367173815396347`*^9}}]
+  3.736716375937804*^9, {3.736717373588087*^9, 3.7367173815396347`*^9}, 
+   3.7371112870641527`*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -1129,16 +1132,16 @@ Cell[CellGroupData[{
 Cell[3817, 119, 106, 1, 64, "Subchapter"],
 Cell[CellGroupData[{
 Cell[3948, 124, 935, 23, 80, "Input"],
-Cell[4886, 149, 437, 11, 42, "Print"],
-Cell[5326, 162, 12538, 219, 232, "Output"]
+Cell[4886, 149, 462, 12, 42, "Print"],
+Cell[5351, 163, 12561, 220, 232, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17913, 387, 167, 2, 64, "Subchapter"],
+Cell[17961, 389, 167, 2, 64, "Subchapter"],
 Cell[CellGroupData[{
-Cell[18105, 393, 1995, 57, 238, "Input"],
-Cell[20103, 452, 464, 12, 42, "Print"],
-Cell[20570, 466, 34396, 618, 234, "Output"]
+Cell[18153, 395, 1995, 57, 238, "Input"],
+Cell[20151, 454, 490, 13, 42, "Print"],
+Cell[20644, 469, 34414, 618, 234, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
