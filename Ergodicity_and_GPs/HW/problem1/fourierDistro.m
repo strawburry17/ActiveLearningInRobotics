@@ -10,6 +10,6 @@ num = numL*numR;
 
 den = sqrt((L1*L2*(2*k1*pi + sin(2*k1*pi))*(2*k2*pi + sin(2*k2*pi)))/(k1*k2));
 
-phi_k = (pi/4)*real(num/den);
+phi_k = (pi/2)*real(num/den);
 
 end
