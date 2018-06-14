@@ -1,17 +1,11 @@
 %% DJ.m
-function dj = DJ(time,x,u,z,v)
-    global Q R P1;
-    global xd;
+function dj = DJ(time,x,u,z,v,a,b)
     
     runningcost = zeros(length(time),1);
     for i = 1:length(time)
-        runningcost(i) = ((x(:,i)-xd(:,i))'*(Q' + Q)*z(:,i) + (u(:,i)')*(R' + R)*v(:,i));
+        runningcost(i) =  a(:,i)'*z(:,i)+ b(:,i)'*v(:,i);
     end
     
-    int_runningcost = 0.5*trapz(time,runningcost);
-%     DJ = int_runningcost;
+    dj = trapz(time,runningcost);
     
-    termcost = 0.5*(x(:,end)-xd(:,end))'*(P1' + P1)*z(:,end);
-        
-    dj = int_runningcost + termcost;
 end

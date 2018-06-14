@@ -1,30 +1,46 @@
 %% descent_dir.m
-function zeta = descent_dir(time, x, u)
-    global Q R;
+function [zeta, avec, bvec] = descent_dir(time, x, u, T)
+    global q R K L1 L2
+    %% compute time-varying signals a(t) and b(t)
+    n = 2; % state dimension
+    avecT = zeros(length(time),2);
+    bvecT = zeros(length(time),2);
+    for i = 1:length(time)
+%         fprintf("time index = %f\n",i);
+        for k1 = 1:K
+            for k2 = 1:K
+                k = [k1; k2];
+                Lambda_k = (1 + norm(k)^2)^(-(n+1)/2);
+                ck = fourierTraj(x,time,T,k,L1,L2);
+                phik = fourierDistro(k,L1,L2);
+                
+                avecT(i,:) = avecT(i,:) + Lambda_k*(2*(ck-phik).*((1/T).*dfk(x(:,i),k,L1,L2)));
+            end
+        end
+        
+        bvecT(i,:) = u(:,i)'*R;
+    end
+    avec = q.*avecT';
+    bvec = bvecT';
+
     %% solve Riccati + remainder equations:
-    PT = zeros(2);
+   PT = zeros(2);
    rT = zeros(2,1);
-   [time, P] = ode45(@(t,P) p4_riccati(t, P, time, x, u), flip(time), PT);
+   
+   [time, P] = ode45(@(t,P) riccati(t, P, time, x, u), flip(time), PT);
    P = flip(P)';
    time = flip(time)';
-   [time, r] = ode45(@(t,r) p4_remainder(t, r, time, x, u, P), flip(time), rT);
+   
+   [time, r] = ode45(@(t,r) remainder(t, r, time, x, u, P, avec, bvec), flip(time), rT);
    r = flip(r)';
    time = flip(time)';
 
    %% simulate state perturbation z forward in time:
-   [time, z] = ode45(@(t,z) p4_z_ode(t,z,time, x, u, P, r), time, zeros(1,3));
+   [time, z] = ode45(@(t,z) z_ode(t,z,time, x, u, P, r, avec, bvec), time, zeros(1,2));
    z = z';
 
    %% compute control perturbation v from z:
    for i = 1:length(time)
-        x1t = x(1,i);
-        x2t = x(2,i);
-
-        x1dt = xd(1,i);
-        x2dt = xd(2,i);
-
-        u1 = u(1,i);
-        u2 = u(2,i);
 
         Pt = zeros(2);
         Pt(1,1) = P(1,i);
@@ -35,18 +51,13 @@ function zeta = descent_dir(time, x, u)
         rt = zeros(2,1);
         rt(1) = r(1,i);
         rt(2) = r(2,i);
-
-        At = zeros(2);
       
         Bt = ones(2);
 
-        aT = ([x1t; x2t; thetat] - [x1dt; x2dt; thetadt])'*(Q' + Q); % TODO: CHANGE FOR ERGODIC CONTROL
-        a = aT';
+        at = avec(:,i);
+        bt = bvec(:,i);
 
-        bT = ([u1; u2])'*(R' + R); % TODO: CHANGE FOR ERGODIC CONTROL
-        b = bT';
-
-        v(:,i) = -inv(R)*(Bt')*Pt*z(:,i) - inv(R)*(Bt')*rt - inv(R)*b;
+        v(:,i) = -inv(R)*(Bt')*Pt*z(:,i) - inv(R)*(Bt')*rt - inv(R)*bt;
    end
    
    %% return descent direction zeta = (z, v):

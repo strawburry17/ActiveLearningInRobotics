@@ -1,7 +1,11 @@
 %% distro.m
-function phi = distro(x)
-    Sigma = diag([2,2]);
-    mu = [0; 0];
+function phi = distro(x,y)
+
+    Sigma = 2*eye(2);
+    mu = zeros(2,1);
     
-    phi = (1/det(2*pi.*Sigma))*exp(-0.5.*(x - mu)'*inv(Sigma)*(x - mu));
+    scale_factor = (1./det(2.*pi.*Sigma));
+    diff = [x; y] - mu;
+    exponent = -0.5.*(diff')*(inv(Sigma)*diff);
+    phi = scale_factor*exp(exponent);
 end

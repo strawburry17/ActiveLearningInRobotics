@@ -1,8 +1,8 @@
 %% obj_fun.m
-function J = obj_fun(tvec,xvec,uvec)
+function J = obj_fun(tvec,xvec,uvec,T)
     global q R;
     
-    ergodicCost = q*ergodicMetric(xvec);
+    ergodicCost = q*ergodicMetric(xvec,tvec,T);
     
     runningcost = zeros(length(tvec),1);
     for i = 1:length(tvec)
